@@ -3,3 +3,47 @@
 2018-12-17 17:40:35.920 CST [23571] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2018-12-17 17:40:35.985 CST [23572] LOG:  database system was shut down at 2018-12-13 21:58:51 CST
 2018-12-17 17:40:36.034 CST [23571] LOG:  database system is ready to accept connections
+2018-12-18 17:31:32.936 CST [31990] ERROR:  syntax error at or near "ON" at character 23
+2018-12-18 17:31:32.936 CST [31990] STATEMENT:  SELECT COUNT(DISTINCT ON (begindate,patient_id,site_id,scopy_id,wid) worksenses.*,scopies.sname,patients.pid,patients.pname,sites.sname) FROM "worksenses" left join scopies on worksenses.scopy_id=scopies.id left join sites on worksenses.site_id=sites.id left join patients on worksenses.patient_id=patients.id WHERE (sites.sname in ('Room1','Room2','Room3','Room4','Room5','ERCP','外做')) AND (wid is not null and wid!='NO' and worksenses.scopy_id is not null and worksenses.site_id is not null and worksenses.patient_id is not null) AND (begindate>='2018-10-18') AND (begindate<='2018-10-18')
+2018-12-18 17:54:55.700 CST [31990] ERROR:  invalid input syntax for integer: "" at character 51
+2018-12-18 17:54:55.700 CST [31990] STATEMENT:  SELECT "worksenses".* FROM "worksenses" WHERE (id='')
+2018-12-18 17:56:11.645 CST [31990] ERROR:  syntax error at or near ")" at character 51
+2018-12-18 17:56:11.645 CST [31990] STATEMENT:  SELECT "worksenses".* FROM "worksenses" WHERE (id=)
+2018-12-18 17:57:27.101 CST [31990] ERROR:  syntax error at or near ")" at character 51
+2018-12-18 17:57:27.101 CST [31990] STATEMENT:  SELECT "worksenses".* FROM "worksenses" WHERE (id=)
+2018-12-18 17:58:09.534 CST [31990] ERROR:  syntax error at or near ")" at character 51
+2018-12-18 17:58:09.534 CST [31990] STATEMENT:  SELECT "worksenses".* FROM "worksenses" WHERE (id=)
+2018-12-18 18:00:03.708 CST [31990] ERROR:  syntax error at or near ")" at character 51
+2018-12-18 18:00:03.708 CST [31990] STATEMENT:  SELECT "worksenses".* FROM "worksenses" WHERE (id=)
+2018-12-18 18:11:43.500 CST [32711] ERROR:  invalid input syntax for type time: "" at character 106
+2018-12-18 18:11:43.500 CST [32711] STATEMENT:  SELECT COUNT(*) FROM "worksenses" WHERE (wid='' and site_id='2' and begindate='2018-10-18' and begintime='')
+2018-12-18 18:14:47.521 CST [32711] ERROR:  invalid input syntax for type time: "" at character 106
+2018-12-18 18:14:47.521 CST [32711] STATEMENT:  SELECT COUNT(*) FROM "worksenses" WHERE (wid='' and site_id='2' and begindate='2018-10-18' and begintime='')
+2018-12-18 18:16:15.338 CST [32711] ERROR:  invalid input syntax for type time: "" at character 106
+2018-12-18 18:16:15.338 CST [32711] STATEMENT:  SELECT COUNT(*) FROM "worksenses" WHERE (wid='' and site_id='2' and begindate='2018-10-18' and begintime='')
+2018-12-18 18:18:17.683 CST [32711] ERROR:  invalid input syntax for type time: "" at character 114
+2018-12-18 18:18:17.683 CST [32711] STATEMENT:  SELECT COUNT(*) FROM "worksenses" WHERE (wid='54565324' and site_id='5' and begindate='2018-10-18' and begintime='')
+2018-12-18 18:21:09.569 CST [32711] ERROR:  invalid input syntax for type time: "" at character 114
+2018-12-18 18:21:09.569 CST [32711] STATEMENT:  SELECT COUNT(*) FROM "worksenses" WHERE (wid='54565907' and site_id='2' and begindate='2018-10-18' and begintime='')
+2018-12-18 18:36:26.749 CST [32014] ERROR:  syntax error at or near "and" at character 36
+2018-12-18 18:36:26.749 CST [32014] STATEMENT:  SELECT * FROM "worksenses" WHERE ( and begindate='2018-10-18' and begintime='16:24:55')
+2018-12-18 19:27:41.060 CST [32014] ERROR:  operator does not exist: character varying = integer at character 35
+2018-12-18 19:27:41.060 CST [32014] HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2018-12-18 19:27:41.060 CST [32014] STATEMENT:  select * from worksenses where wid=54577089;
+	
+	
+	
+2018-12-18 19:32:00.804 CST [32014] ERROR:  syntax error at or near "worksenses" at character 8
+2018-12-18 19:32:00.804 CST [32014] STATEMENT:  delete worksenses where wid='54557576' and begintime='08:08:08';
+	commit;
+	select * from worksenses where wid='54557576';
+	
+	
+	
+2018-12-18 19:32:14.115 CST [32014] WARNING:  there is no transaction in progress
+2018-12-19 15:43:09.224 CST [64472] ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions at character 31
+2018-12-19 15:43:09.224 CST [64472] STATEMENT:  SELECT DISTINCT ON (begindate,patient_id,site_id,scopy_id,wid) worksenses.*,scopies.sname,patients.pid,patients.pname,sites.sname FROM "worksenses" INNER JOIN "scopies" ON "scopies"."id" = "worksenses"."scopy_id" INNER JOIN "sites" ON "sites"."id" = "worksenses"."site_id" INNER JOIN "patients" ON "patients"."id" = "worksenses"."patient_id" WHERE (sites.sname in ('Room1','Room2','Room3','Room4','Room5','ERCP','外做')) AND (wid is not null and wid!='NO') AND (begindate>='2018/12/18') AND (begindate<='2018/12/18')  ORDER BY begindate asc, begintime asc;
+2018-12-31 12:13:26.557 CST [23571] LOG:  received smart shutdown request
+2018-12-31 12:13:26.562 CST [23571] LOG:  worker process: logical replication launcher (PID 23578) exited with exit code 1
+2018-12-31 12:13:26.563 CST [23573] LOG:  shutting down
+2018-12-31 12:13:26.653 CST [23571] LOG:  database system is shut down
